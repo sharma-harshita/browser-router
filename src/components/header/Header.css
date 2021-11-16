@@ -1,18 +1,18 @@
 .navbar{
     display: flex;
     height: 50px;
-    background-color: aqua;
-    border-radius: 50px;
+    background-color: navy;
+    /* border-radius: 50px; */
     justify-content: space-around;
 }
 
 .navbarChild{
-    color: black;
+    color: white;
     text-decoration: none;
     font-size: 30px;
     font-family: cursive;
 }
 
 .navbarChild:hover{
-    color: blue;
+    color: pink;
 }

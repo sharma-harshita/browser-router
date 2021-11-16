@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link ,useNavigate} from 'react-router-dom'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -7,20 +7,15 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
-const students = [
-  {id: 1, name : "John", age: 24, course: "MERN", batch: "October"},
-  {id: 2, name : "Doe", age: 25, course: "MERN", batch: "November"},
-  {id: 3, name : "Biden", age: 26, course: "MERN", batch: "September"},
-  {id: 4, name : "Barar", age: 22, course: "MERN", batch: "September"},
-  {id: 5, name : "Christ", age: 23, course: "MERN", batch: "October"},
-  {id: 6, name : "Elent", age: 24, course: "MERN", batch: "November"},
-]
-
+import studentsData from './studentsData';
+import './Student.css';
 
 const StudentList = () => {
+  let navigate = useNavigate();
   return(
     <div>
+    <h1>Students Details</h1>
+    <button className="addStudentBtn" onClick={()=>{navigate("/students-desc")}}>Add new student</button>
     <TableContainer component={Paper}>
     <Table sx={{ minWidth: 650 }} aria-label="simple table">
     <TableHead>
@@ -33,7 +28,7 @@ const StudentList = () => {
     </TableRow>
     </TableHead>
     <TableBody>
-    {students.map((row) => (
+    {studentsData.map((row) => (
       <TableRow
       key={row.id}
       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -43,7 +38,6 @@ const StudentList = () => {
       <TableCell align="right">{row.course}</TableCell>
       <TableCell align="right">{row.batch}</TableCell>
       <TableCell align="right"><Link to={`/students/${row.id}`}>Edit</Link></TableCell>
-      
       </TableRow>
       ))}
       </TableBody>
